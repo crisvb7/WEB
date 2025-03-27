@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Prácticas - Cristian Villa Blanco</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+
+        
+
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: var(--container-bg);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+        
+        .switch {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: black;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+    <header class="navbar">
+    	<a href="lobby.html" class="ui-btn">
+            <span>
+                Inicio 
+            </span>
+        </a>
+
+        <!-- CUBE --> 
+        <!--<div class="loader">
+               <div class="cube">
+                    <div class="face front"></div>
+                    <div class="face back"></div>
+                    <div class="face left"></div>
+                    <div class="face right"></div>
+                    <div class="face top"></div>
+                    <div class="face bottom"></div>
+            </div>
+        </div>-->
+
+    	<label class="switch">
+            <input id="themeToggle" type="checkbox">
+            <span class="slider"></span>
+            <div class="loader2" id="modeLoader">
+                <span class="loader-text" id="modeText">Light mode</span>
+            </div>
+        </label>
+    </header>
+
+<body>
+
+    <header>
+        <h1> 
+            <div class="loader">
+              <div class="wrapper">
+                <div class="text">PROYECTO PRÁCTICAS</div>
+                <div class="box"></div>
+              </div>
+            </div>
+        </h1>
+    </header>
+    
+    <div class="container">
+        <section id="explicacion">
+            <h2>Explicación Práctica</h2>
+            <p>En este página presentaré un proceso de instalación, configuración y administración de entornos virtualizados, para ello, utilizaré como sistemas operativos un Windows 10, un Windows Server 2019 y un Ubuntu Server 24.04.1, como hipervisor utilizaré VirtualBox.
+            </p>
+            <p>
+            En las siguientes secciones se detallarán los pasos a seguir para el desarrollo de la práctica, y junto a las explicaciones de estos se incluirán imágenes ilustrativas.
+            </p>
+        </section>
+
+        <section id="indice">
+            <h2>Índice</h2>
+            <a href="#windows" class="btn-shine btn-windows a-windows">1. Windows</a>
+            <a href="#ubuntu" class="btn-shine btn-ubuntu a-ubuntu">2. Ubuntu</a>
+            <a href="#docker" class="btn-shine btn-docker a-docker">3. Docker</a>
+            <a href="#postgresql" class="btn-shine btn-postgresql a-postgresql">4. PostgreSQL</a>
+        </section>            
+        <section>
+            <h2>Especificaciones Máquinas virtuales</h2>
+            <ul>
+                <li>Disco Duro: 40GB</li>
+                <li>Memoria RAM: 2GB</li>
+                <li>Red: NAT</li>
+            </ul>
+        </section>
+
+        <section id="windows">
+            <h1 class= "windows">WINDOWS</h1>
+            <h2>Instalación Windows Server 2019</h2>
+            <p>1. Instalamos el programa VirtualBox.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Pantalla de inicio</div>
+                <div class="content">
+                    <img  src="images/image1.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Configuramos una nueva máquina virtual.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Creación máquina virtual</div>
+                <div class="content">
+                    <img  src="images/image2.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Ponemos 2048MB (2GB) de memoria RAM.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Creación máquina virtual</div>
+                <div class="content">
+                    <img  src="images/image3.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4. Creamos el disco duro virtual.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Creación máquina virtual</div>
+                <div class="content">
+                    <img  src="images/image4.png">
+                <br />
+                </div>
+            </div>
+
+            <p>5. Como tipo de archivo de disco duro le pondremos VHD.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Creación máquina virtual</div>
+                <div class="content">
+                    <img  src="images/image5.png">
+                <br />
+                </div>
+            </div>
+
+            <p>6. Creamos el disco duro virtual.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Creación máquina virtual</div>
+                <div class="content">
+                    <img  src="images/image6.png">
+                <br />
+                </div>
+            </div>
+
+            <p>7. Definimos la ubicación en la que guardaremos el disco duro.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Creación máquina virtual</div>
+                <div class="content">
+                    <img  src="images/image7.png">
+                <br />
+                </div>
+            </div>
+
+            <p>8. Esta es la vista final de la configuración de la máquina virtual</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Pantalla de inicio</div>
+                <div class="content">
+                    <img  src="images/image8.png">
+                <br />
+                </div>
+            </div>
+
+            <p>9. Al arrancar la máquina empezaremos con la instalación del sistema operativo, aquí definiremos el idioma de la instalación, el formatico de hora y la moneda, y el idioma del teclado que usaremos.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Instalador de Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image9.png">
+                <br />
+                </div>
+            </div>
+
+            <p>10. Iniciamos la instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Instalador de Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image10.png">
+                <br />
+                </div>
+            </div>
+
+            <p>11.   Elegimos la versión del sistema operativo que queremos instalar.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Instalador de Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image11.png">
+                <br />
+                </div>
+            </div>
+
+            <p>12.  Escogeremos personalizada ya que es una instalación sobre limpio.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Instalador de Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image12.png">
+                <br />
+                </div>
+            </div>
+
+            <p>13. Escogeremos el único disco que nos aparecerá, al darle a siguiente empezará la instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Instalador de Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image13.png">
+                <br />
+                </div>
+            </div>
+
+            <p>14.  Cuando acabe la instalación y se reinicie el sistema nos saltará la pantalla de personalización de la imagen, en ella introduciremos un usuario con su respectiva contraseña (Administrador/Curso2025 en este caso).</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración inicial Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image14.png">
+                <br />
+                </div>
+            </div>
+
+            <p>15.   Al pulsar finalizar nos aparecerá el escritorio.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Escritorio Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image15.png">
+                <br />
+                </div>
+            </div>
+
+            <p>16.  Ahora procederemos a crear el usuario Practicas, entraremos en el panel de control.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control</div>
+                <div class="content">
+                    <img  src="images/image16.png">
+                <br />
+                </div>
+            </div>
+
+            <p>17. Pulsaremos en ‘Cuentas de usuario’ y de nuevo en ‘Cuentas de usuario’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control / Cuentas de usuario</div>
+                <div class="content">
+                    <img  src="images/image17.png">
+                <br />
+                </div>
+            </div>
+
+            <p>18. Dentro ‘Cuentas de usuario’ haremos clic en ‘Administrar otra cuenta’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control / Cuentas de usuario / Cuentas de usuario</div>
+                <div class="content">
+                    <img  src="images/image18.png">
+                <br />
+                </div>
+            </div>
+
+            <p>19. Aquí pulsaremos en ‘Agregar una cuenta de usuario’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administración de cuentas</div>
+                <div class="content">
+                    <img  src="images/image19.png">
+                <br />
+                </div>
+            </div>
+
+            <p>20. Nos saldrá una pantalla para crear el nuevo usuario, crearemos un usuario llamado ‘Practicas’ con contraseña ‘Pract@123’, tendremos que añadir como último valor una pista para la contraseña en caso de extravío de esta.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Creación usuario</div>
+                <div class="content">
+                    <img  src="images/image20.png">
+                <br />
+                </div>
+            </div>
+
+            <p>21. Pantalla de comprobación de los datos del usuario antes de registrarlo.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Confirmación creación usuario</div>
+                <div class="content">
+                    <img  src="images/image21.png">
+                <br />
+                </div>
+            </div>
+
+            <p>22. Ahora procederemos a instalar las actualizaciones del sistema operativo, para ello iremos a Configuración al apartado de ‘Actualización y seguridad’, y pulsaremos en ‘Buscar actualizaciones’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración / Windows Update</div>
+                <div class="content">
+                    <img  src="images/image22.png">
+                <br />
+                </div>
+            </div>
+
+            <p>23. Después de actualizar el sistema deshabilitaremos el firewall, iremos al panel de control y pulsaremos en ‘Sistema y seguridad’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control</div>
+                <div class="content">
+                    <img  src="images/image23.png">
+                <br />
+                </div>
+            </div>
+
+            <p>24.  Entraremos en ‘Firewall de Windows Defender’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control / Sistema y seguridad</div>
+                <div class="content">
+                    <img  src="images/image24.png">
+                <br />
+                </div>
+            </div>
+
+            <p>25. Haremos clic en ‘Activar o desactivar el Firewall de Windows Defender’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control / Sistema y seguridad / Firewall de Windows Defender</div>
+                <div class="content">
+                    <img  src="images/image25.png">
+                <br />
+                </div>
+            </div>
+
+            <p>26.  En esta pantalla debemos desactivar el firewall activando las opciones ‘Desactivar Firewall de Windows Defender (no recomendable)’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración Firewall de Windows Defender</div>
+                <div class="content">
+                    <img  src="images/image26.png">
+                <br />
+                </div>
+            </div>
+
+            <p>27. Al volver hacia atrás podremos ver el cambio en el firewall.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control / Sistema y seguridad / Firewall de Windows Defender</div>
+                <div class="content">
+                    <img  src="images/image27.png">
+                <br />
+                </div>
+            </div>
+
+            <p>28.  Ahora activaremos el Escritorio remoto, en primer lugar, iremos a la configuración y entraremos en ‘Sistema’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración</div>
+                <div class="content">
+                    <img  src="images/image28.png">
+                <br />
+                </div>
+            </div>
+
+            <p>29. Entraremos en ‘Escritorio remoto’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración / Sistema</div>
+                <div class="content">
+                    <img  src="images/image29.png">
+                <br />
+                </div>
+            </div>
+
+            <p>30. Aquí activaremos la opción ‘Escritorio remoto’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración / Sistema / Escritorio remoto</div>
+                <div class="content">
+                    <img  src="images/image30.png">
+                <br />
+                </div>
+            </div>
+
+            <p>31.   Para empezar con la creación del directorio activo entraremos en el administrador del servidor.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor</div>
+                <div class="content">
+                    <img  src="images/image31.png">
+                <br />
+                </div>
+            </div>
+
+            <p>32. Entraremos en el asistente para agregar roles y características que se encuentra dentro de ‘Administrar’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image32.png">
+                <br />
+                </div>
+            </div>
+
+            <p>33.   En tipo de instalación seleccionaremos ‘Instalación basada en características o en roles’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image33.png">
+                <br />
+                </div>
+            </div>
+
+            <p>34.  En ‘Selección de servidor’ seleccionaremos nuestro equipo como servidor.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image34.png">
+                <br />
+                </div>
+            </div>
+
+            <p>35. En ‘Roles de servidor’, seleccionaremos el rol ‘Servicios de dominio de Active Directory’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image35.png">
+                <br />
+                </div>
+            </div>
+
+            <p>36.  El ‘Servidor DNS’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image36.png">
+                <br />
+                </div>
+            </div>
+
+            <p>37.   Y el ‘Servidor DHCP’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image37.png">
+                <br />
+                </div>
+            </div>
+
+            <p>38.  Aceptaremos la instalación de las características necesarias por el rol.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image38.png">
+                <br />
+                </div>
+            </div>
+
+            <p>39. Nos saldrá un aviso por la instalación de los servicios DNS y DHCP.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Aviso de Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image39.png">
+                <br />
+                </div>
+            </div>
+
+            <p>40.  Este aviso se deberá a que el servidor necesitará tener una ip estática, por lo que la debemos de cambiar manualmente.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración TCP/IPv4</div>
+                <div class="content">
+                    <img  src="images/image40.png">
+                <br />
+                </div>
+            </div>
+
+            <p>41.   Las características las dejaremos tal y como están.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image41.png">
+                <br />
+                </div>
+            </div>
+
+            <p>42.  Confirmaremos las selecciones de la instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image42.png">
+                <br />
+                </div>
+            </div>
+
+            <p>43.   Iniciaremos la instalación y esperaremos hasta que finalice.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image43.png">
+                <br />
+                </div>
+            </div>
+
+            <p>44.  Al finalizar la instalación, debemos de configurar el servidor, poniendo en primer lugar que se trata de un nuevo bosque y su nombre de dominio raíz.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para configuración de Servicios de dominio de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image44.png">
+                <br />
+                </div>
+            </div>
+
+            <p>45.   En ‘Opciones del controlador de dominio’, definiremos características del servidor como los niveles funcionales de dominio y bosque y la contraseña para la restauración (Curso2025).</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para configuración de Servicios de dominio de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image45.png">
+                <br />
+                </div>
+            </div>
+
+            <p>46.  En ‘Opciones adicionales’ elegiremos el nombre de dominio NetBIOS.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para configuración de Servicios de dominio de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image46.png">
+                <br />
+                </div>
+            </div>
+
+            <p>47.   A continuación, seguiremos hasta la ‘Comprobación de requisitos previos’, en esta le daremos a instalar.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Asistente para configuración de Servicios de dominio de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image47.png">
+                <br />
+                </div>
+            </div>
+
+            <p>48.  Al finalizar la instalación se cerrará la sesión actual, podremos observar que antes del usuario se encontrará el dominio.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Inicio sesión Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image48.png">
+                <br />
+                </div>
+            </div>
+
+            <p>49.   Al abrir el administrador del servidor podremos observar un aviso, este nos llevará a la parte final de la configuración de DHCP.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Aviso Administrador del servidor</div>
+                <div class="content">
+                    <img  src="images/image49.png">
+                <br />
+                </div>
+            </div>
+
+            <p>50.  En este asistente definiremos las credenciales que se utilizarán para autorizar al servidor DHCP dentro del directorio activo, después de esto reiniciaremos el equipo.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Asistente posterior a la instalación de DHCP</div>
+                <div class="content">
+                    <img  src="images/image50.png">
+                <br />
+                </div>
+            </div>
+
+            <p>51.   Procederemos ahora a instalar el ‘Servicio de escritorio remoto’, para ello debemos añadir el rol de servidor ‘Servicio de Escritorio remoto’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image51.png">
+                <br />
+                </div>
+            </div>
+
+            <p>52. En los servicios de rol, agregaremos el servicio ‘Remoto Desktop Session Host’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image52.png">
+                <br />
+                </div>
+            </div>
+
+            <p>53.   Confirmaremos las selecciones de instalación y reiniciaremos el servidor.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Asistente para agregar roles y características</div>
+                <div class="content">
+                    <img  src="images/image53.png">
+                <br />
+                </div>
+            </div>
+
+            <p>54.  Por último, crearemos los usuarios y las unidades organizativas del directorio activo, para ello nos dirigiremos a ‘Usuarios y equipos de Active Directory’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor</div>
+                <div class="content">
+                    <img  src="images/image54.png">
+                <br />
+                </div>
+            </div>
+
+            <p>55.   Allí procederemos a crear los usuarios y las unidades organizativas dando clic derecho al nombre del directorio, pulsando en ‘Nuevo’ y en ‘Usuario’ o en ‘Unidad organizativa’. </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Usuarios y equipos de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image55.png">
+                <br />
+                </div>
+            </div>
+
+            <p>56.  Elegiremos los datos de los usuarios y/o de las unidades organizativas, de manera que el directorio nos quedara así:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Usuarios y equipos de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image56.png">
+                <br />
+                </div>
+            </div>
+
+            <p>57.   En la unidad organizativa 1 añadiremos a los usuarios ‘Usuario1’ y ‘Usuario2’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Usuarios y equipos de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image57.png">
+                <br />
+                </div>
+            </div>
+
+            <p>58.   En la unidad organizativa 2 añadiremos a los usuarios ‘Usuario3’ y ‘Usuario4’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administrador del servidor / Usuarios y equipos de Active Directory</div>
+                <div class="content">
+                    <img  src="images/image58.png">
+                <br />
+                </div>
+            </div>
+
+            <p>59.   Configuraremos una nueva máquina Windows 10 con las siguientes especificaciones:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">VirtualBox - Pantalla de inicio</div>
+                <div class="content">
+                    <img  src="images/image59.png">
+                <br />
+                </div>
+            </div>
+
+            <p>60.  La instalación del sistema será idéntica a la antes explicada para el Windows Server 2016, exceptuando la elección de sistema operativo, para esta instalación elegimos Windows 10 Pro.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Instalador de Windows 10</div>
+                <div class="content">
+                    <img  src="images/image60.png">
+                <br />
+                </div>
+            </div>
+
+            <p>61.   Revisaremos los pasos del 16 al 21 del Windows Server para crear un nuevo usuario, tendrá de nombre de usuario ‘practicas1’ y de contraseña ‘Pract@123’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Administración de cuentas</div>
+                <div class="content">
+                    <img  src="images/image61.1.png">
+                <br />
+                </div>
+            </div>
+
+            <p>62.   Deshabilitamos el firewall de Windows.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración Firewall de Windows Defender</div>
+                <div class="content">
+                    <img  src="images/image61.png">
+                <br />
+                </div>
+            </div>
+
+            <p>63. Habilitaremos el escritorio remoto.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración / Sistema / Escritorio remoto</div>
+                <div class="content">
+                    <img  src="images/image62.png">
+                <br />
+                </div>
+            </div>
+
+            <p>64.  Cambiamos el DNS para que apunte al servidor.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Configuración TCP/IPv4</div>
+                <div class="content">
+                    <img  src="images/image63.png">
+                <br />
+                </div>
+            </div>
+
+            <p>65. Finalmente, uniremos el equipo al dominio, para ello entraremos en el panel de control y pulsaremos en ‘Mostrar el nombre de este equipo’, ahí pulsaremos ‘Cambiar el nombre de este equipo’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Panel de control / Sistema y seguridad</div>
+                <div class="content">
+                    <img  src="images/image65.png">
+                <br />
+                </div>
+            </div>
+        	<p></p>
+            <div class="card" id="1">
+                <div class="head">Botón cambio de nombre</div>
+                <div class="content">
+                    <img  src="images/image64.png">
+                <br />
+                </div>
+            </div>
+
+            <p>66.  Cambiaremos el miembro de ‘Grupo de trabajo’ a ‘Dominio’ y pondremos el nombre del dominio (practicas.cvb). Nos saldrá el siguiente mensaje para iniciar sesión en el dominio.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Petición de credenciales para unirse al dominio</div>
+                <div class="content">
+                    <img  src="images/image66.png">
+                <br />
+                </div>
+            </div>
+
+            <p>67.   Al darle a ‘Aceptar’ el equipo nos indicará que se ha unido correctamente al dominio.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Aviso cambio en el dominio o nombre del equipo</div>
+                <div class="content">
+                    <img  src="images/image67.png">
+                <br />
+                </div>
+            </div>
+
+            <p>68.  Una vez unido al domino, iniciamos sesión con uno de los usuarios ya creados. </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Inicio sesión Windows 10</div>
+                <div class="content">
+                    <img  src="images/image68.png">
+                <br />
+                </div>
+            </div>
+
+            <p>69.   Nos pedirá cambiar la contraseña al iniciar sesión, pondremos ‘Pract@123’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Inicio sesión Windows 10</div>
+                <div class="content">
+                    <img  src="images/image69.png">
+                <br />
+                </div>
+            </div>
+
+            <p>70.  Como último paso, crearemos una carpeta y la compartiremos con solo permisos de lectura. Crearemos la carpeta ‘PruebaConex’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="1">
+                <div class="head">Carpeta compartida 'PruebaConex'</div>
+                <div class="content">
+                    <img  src="images/image70.png">
+                <br />
+                </div>
+            </div>
+
+            <p>71. Haremos clic derecho en ella, propiedades, y nos iremos al apartado ‘Compartir’. Ahí compartiremos la carpeta con el usuario que nos interese, en este caso ‘Usuario1’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card">
+                <div class="head">Compartición de carpeta por red</div>
+                <div class="content">
+                    <img  src="images/image71.png">
+                <br />
+                </div>
+            </div>
+
+            <p>72.  Al aceptar nos saldrá una pestaña que nos informará que la carpeta está compartida, además nos indicará cual es la dirección para acceder a ella.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card">
+                <div class="head">Compartición de carpeta por red</div>
+                <div class="content">
+                    <img  src="images/image72.png">
+                <br />
+                </div>
+            </div>
+
+            <p>73. Al introducir esa dirección (Podemos cambiar el nombre del equipo por la dirección ip del mismo) nos saldrá una pantalla para introducir credenciales, deberemos iniciar sesión con un usuario autorizado (en este caso ‘administrador’ o ‘Usuario1’) y ya podremos ver la carpeta compartida.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card">
+                <div class="head">Vista carpeta compartida 'PruebaConex' desde la otra máquina</div>
+                <div class="content">
+                    <img  src="images/image73.png">
+                <br />
+                </div>
+            </div>
+        </section>
+
+        <section id="ubuntu">
+            <h1 class="ubuntu">UBUNTU</h1>
+            <h2>Instalación Ubuntu Server</h2>
+            <p>1.   Configuramos una máquina virtual con la ISO de Ubuntu server con los siguientes recursos: </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image74.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2.    Elegiremos el idioma de instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image75.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3.   Elegiremos el tipo de instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image76.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4. Configuramos la red.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image77.png">
+                <br />
+                </div>
+            </div>
+
+            <p>5. Avanzamos hasta la configuración del mirror address, ahí se descargarán repositorios para el sistema.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image78.png">
+                <br />
+                </div>
+            </div>
+
+            <p>6.   Configuramos el esquema del almacenamiento del sistema.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image79.png">
+                <br />
+                </div>
+            </div>
+
+            <p>7.   Configuramos el almacenamiento.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image80.png">
+                <br />
+                </div>
+            </div>
+
+            <p>8. Configuramos el perfil del sistema, es decir, el nombre del servidor, además debemos elegir un nombre de usuario y su respectiva contraseña.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image81.png">
+                <br />
+                </div>
+            </div>
+
+            <p>9.   No actualizamos a Ubuntu Pro (No afectaría en nada a esta práctica si lo actualizáramos a Ubuntu pro)</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image82.png">
+                <br />
+                </div>
+            </div>
+
+            <p>10.  Seguidamente comenzará la instalación, al finalizar deberemos configurar varios aspectos, en primer lugar, el idioma y la distribución del teclado.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image83.png">
+                <br />
+                </div>
+            </div>
+
+            <p>11.  Configuraremos la red automáticamente por DHCP (Este paso se realizará después de que se acabe de instalar completamente el sistema y se reinicie [Paso 14]).</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Ubuntu server</div>
+                <div class="content">
+                    <img  src="images/image84.png">
+                <br />
+                </div>
+            </div>
+            <p></p>
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Fichero 50-cloud-init.yaml</div>
+                <div class="content">
+                    <img  src="images/image85.png">
+                <br />
+                </div>
+            </div>
+
+            <p>12.  E instalaremos OpenSSH Server.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image86.png">
+                <br />
+                </div>
+            </div>
+
+            <p>13.  Se empezará a instalar el sistema, al finalizar reiniciaremos el sistema.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Instalador de Windows Server 2019</div>
+                <div class="content">
+                    <img  src="images/image87.png">
+                <br />
+                </div>
+            </div>
+
+            <p>14.  Iniciaremos sesión en el sistema con el usuario creado anteriormente.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Ubuntu server</div>
+                <div class="content">
+                    <img  src="images/image88.png">
+                <br />
+                </div>
+            </div>
+
+            <p>15.  Una vez instalado el sistema crearemos cuatro usuarios con diferentes niveles de permiso:</p>
+
+            <ul>
+                <li>Administrador: Acceso total al  sistema y permisos de superusuario.</li>
+                <p></p>
+                <div class="card" id="div2_2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image89.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Usuario estándar: Permisos básicos sin acceso administrativo.</li>
+                <p></p>
+                <div class="card" id="div2_2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image90.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Usuario con acceso a Samba:</li>
+                <p></p>
+                <div class="card" id="div2_2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image92.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <div class="card" id="div2_2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image91.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <div class="card" id="div2_2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image93.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <div class="card" id="div2_2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image94.png">
+                    <br />
+                    </div>
+                </div>
+            </ul>
+
+            <li>Usuario restringido:</li>
+                <p></p>
+                <div class="card" id="div2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image96.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <div class="card" id="div2">
+                    <div class="head">Ubuntu server</div>
+                    <div class="content">
+                        <img  src="images/image95.png">
+                    <br />
+                    </div>
+                </div>            
+
+            <p>16.  Habilitaremos el servicio SSH para acceder remotamente y poder trabajar con el programa Putty desde nuestro equipo local.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Ubuntu server</div>
+                <div class="content">
+                    <img  src="images/image97.png">
+                <br />
+                </div>
+            </div>
+
+            <p>17. Instalaremos y configuraremos Samba para compartir una carpeta en red. Con este comando instalaremos Samba (La instalación no procede ya que la instale anteriormente en el sistema):</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div2">
+                <div class="head">Ubuntu server</div>
+                <div class="content">
+                    <img  src="images/image98.png">
+                <br />
+                </div>
+            </div>
+
+            <p>18.  En el directorio /etc/samba tenemos un archivo de configuración, será necesario que realicemos algunos cambios en ello:</p>
+
+            <ul>
+                <li>Añadiremos el nombre del dominio.</li>
+                    <p></p>
+                    <div class="card" id="div2_2">
+                        <div class="head">Fichero configuración samba</div>
+                        <div class="content">
+                            <img  src="images/image99.png">
+                        <br />
+                        </div>
+                    </div>
+                    <p></p>
+    
+                <li>Al final del fichero añadiremos la configuración necesaria de la carpeta que queremos añadir, con esta configuración todos los usuarios podrán acceder a la carpeta:</li>
+                    <p></p>
+                    <div class="card" id="div2_2">
+                        <div class="head">Fichero configuración samba</div>
+                        <div class="content">
+                            <img  src="images/image100.png">
+                        <br />
+                        </div>
+                    </div>
+                    <p></p>
+    
+                <li>Con esta configuración solo podrá acceder el usuario ‘usuariosamba’:</li>
+                    <p></p>
+                    <div class="card" id="div2_2">
+                        <div class="head">Fichero configuración samba</div>
+                        <div class="content">
+                            <img  src="images/image101.png">
+                        <br />
+                        </div>
+                    </div>
+                    <p></p>
+
+            </ul>
+
+            <p>19.   Asignamos los permisos para cada usuario en la carpeta compartida y verificamos que desde nuestro propio Windows podemos acceder. </p>
+        
+            <ul>
+                <li>Verificamos el acceso desde Windows:</li>
+                    <p></p>
+                    <div class="card" id="div2_2">
+                        <div class="head">Acceso a directorio compartido 'Compartida' desde Ubuntu a Windows</div>
+                        <div class="content">
+                            <img  src="images/image102.png">
+                        <br />
+                        </div>
+                    </div>
+                    <p></p>
+            </ul>            
+        </section>
+
+        <section id="docker">
+            <h1 class="docker">DOCKER</h1>
+            <h2>Instalación Docker Engine</h2>
+            <p>1.   Para comenzar, actualizaremos la lista de paquetes desde los repositorios que tiene el sistema configurado. </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image103.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2.   Seguidamente instalaremos los ca-certificates para que el sistema maneje certificados SSL/TLS y curl para que nos permita descargar archivos desde la web. </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image104.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Crearemos el directorio /etc/apt/keyrings con permisos 0755 (lectura y ejecución para todos, escritura solo para el propietario). Este directorio se usará para almacenar claves de firma de repositorios. </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image105.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4. Descargaremos la clave GPG de Docker y la guardaremos en el directorio /etc/apt/keyrings/Docker.asc </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image106.png">
+                <br />
+                </div>
+            </div>
+
+            <p>5. Otorgaremos permisos de lectura a todos los usuarios para la clave de Docker. </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image107.png">
+                <br />
+                </div>
+            </div>
+
+            <p>6.   Como paso final de la instalación, añadiremos el repositorio a x con el siguiente comando: </p>
+
+            <div class="card2">
+                <div class="bg" id="docker-6">
+                	echo \ "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \ $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+                </div>
+                <div class="blob"></div>
+            </div>
+            <p></p>
+
+            <button class="copy-btn" onclick="copyText()">
+				<svg viewBox="0 0 512 512" class="svgIcon" height="1em"><path d="M288 448H64V224h64V160H64c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H288c35.3 0 64-28.7 64-64V384H288v64zm-64-96H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H224c-35.3 0-64 28.7-64 64V288c0 35.3 28.7 64 64 64z"></path></svg>
+			  	<span class="effect"></span>
+			</button>
+
+            <p>7. Instalamos los paquetes Docker.</p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image108.png">
+                <br />
+                </div>
+            </div>
+
+            <p>9. Comprobamos que la instalación ha sido un éxito con un hello-world. </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image109.png">
+                <br />
+                </div>
+            </div>
+
+            <h2>Instalación Docker Compose</h2>
+
+            <p>1. Para instalar Docker Compose utilizaremos este comando: </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image110.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Verificaremos la instalación con: </p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image111.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. [OPCIONAL] Si quisiéramos actualizar el software deberíamos utilizar el mismo comando de instalación de nuevo.</p>
+
+            <p>Como parte final de la instalación del Docker crearemos un fichero llamado compose.yaml en la ruta /opt.</p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image112.png">
+                <br />
+                </div>
+            </div>
+
+            <p>En este fichero almacenaremos la configuración necesaria para la conexión de postgreSQL al Docker.</p>
+
+            <!-- TARJETA --> 
+            <div class="card" id="div3">
+                <div class="head">Fichero docker-compose.yaml</div>
+                <div class="content">
+                    <img  src="images/image113.png">
+                <br />
+                </div>
+            </div>
+
+        </section>
+
+        <section id="postgresql">
+            <h1 class="postgresql">POSTGRESQL</h1>
+            <h2>Instalación en Windows</h2>
+            <p>1. Para comenzar, iremos a la página web oficial de postgresql,desde ahí descargaremos el instalador para Windows. </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Página web oficial PostgreSQL</div>
+                <div class="content">
+                    <img  src="images/image114.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Elegiremos la versión que necesitemos, en este caso la última. </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Página web oficial PostgreSQL</div>
+                <div class="content">
+                    <img  src="images/image115.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Ejecutaremos el instalador y comenzaremos la instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQL</div>
+                <div class="content">
+                    <img  src="images/image116.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4. Elegiremos el directorio de instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQ</div>
+                <div class="content">
+                    <img  src="images/image117.png">
+                <br />
+                </div>
+            </div>
+
+            <p>5. Elegiremos el directorio donde almacenaremos los datos.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQ</div>
+                <div class="content">
+                    <img  src="images/image118.png">
+                <br />
+                </div>
+            </div>
+
+            <p>6. Definiremos una contraseña para el superusuario postgres (Pondremos ‘Curso2025’).</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQ</div>
+                <div class="content">
+                    <img  src="images/image119.png">
+                <br />
+                </div>
+            </div>
+
+            <p>7. El puerto lo dejaremos como está predeterminadamente.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQ</div>
+                <div class="content">
+                    <img  src="images/image120.png">
+                <br />
+                </div>
+            </div>
+
+            <p>8. Avanzaremos hasta que empiece la instalación.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQ</div>
+                <div class="content">
+                    <img  src="images/image121.png">
+                <br />
+                </div>
+            </div>
+
+            <p>9. No lanzaremos el programa ‘Stack Builder’ al finalizar la instalación, ya que no es necesario para esta práctica.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Instalación PostgreSQ</div>
+                <div class="content">
+                    <img  src="images/image122.png">
+                <br />
+                </div>
+            </div>
+
+            <p>10. Ejecutaremos el SQL Shell.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Búsqueda 'psql' en buscador</div>
+                <div class="content">
+                    <img  src="images/image123.png">
+                <br />
+                </div>
+            </div>
+
+            <p>11. Pulsaremos enter hasta la opción ‘Contraseña para usuario postgres’, ya que nos conectaremos al server local, a la database postgres, con el puerto predeterminado y el superusuario, pondremos la contraseña antes definida (Curso2025).</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Inicialización postgresql</div>
+                <div class="content">
+                    <img  src="images/image124.png">
+                <br />
+                </div>
+            </div>
+
+            <p>12. Y con esto ya habremos terminado.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Inicialización postgresql</div>
+                <div class="content">
+                    <img  src="images/image125.png">
+                <br />
+                </div>
+            </div>
+
+            <h2>Instalación en Linux</h2>
+
+            <p>1. Para instalar PostgreSQL en Linux usaremos el siguiente comando:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image126.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Arrancaremos el servicio.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image127.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Por último, entraremos en el usuario postgres y seguidamente en el psql.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image128.png">
+                <br />
+                </div>
+            </div>
+
+            <h2>Instalación en Linux (DOCKER)</h2>
+
+            <p>1. Para instalar PostgreSQL en Linux mediante Docker usaremos el siguiente comando:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image129.2.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Linux descargará e instalará la imagen más actualizada de PostgreSQL, por lo que seguidamente crearemos un contenedor de nombre seresco y contraseña ‘Curso2025’. Los caracteres que devuelve el comando corresponden con el ID del contenedor creado.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image130.png">
+                <br />
+                </div>
+            </div>
+
+            <h2>Conexión base de datos</h2>
+
+            <p>1. Para poder conectarnos desde Linux al PostgreSQL que tenemos en nuestra máquina Windows mediante Docker, primero debemos de utilizar el siguiente comando: </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image131.1.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Empezará a levantar la infraestructura definida en el fichero docker-compose.yaml.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Ubuntu Server</div>
+                <div class="content">
+                    <img  src="images/image131.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Ahora pasaremos a nuestra máquina Windows, en ella descargaremos el programa DBeaver, el cual es un gestor de bases de datos que nos permitirá trabajar más eficientemente, lo descargaremos de su página oficial:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">Página web oficial DBeaver</div>
+                <div class="content">
+                    <img  src="images/image132.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4. Ejecutaremos el programa y generaremos una nueva conexión, rellenaremos los datos de la siguiente forma:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image133.png">
+                <br />
+                </div>
+            </div>
+
+            <p>5. Al conectarnos, podremos ver que nos aparecerá la IP de la conexión y (si tiene) las bases de datos creadas en la misma.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image134.png">
+                <br />
+                </div>
+            </div>
+
+            <h2>Base de datos: Centro Educativo</h2>
+
+            <p>1. En primer lugar, creamos la base de datos:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image135.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Crearemos un esquema del centro educativo (Si no se hubiera creado automáticamente al crear la base de datos): </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image136.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Creamos el tablespace ‘seresco’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image137.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4. El usuario ‘user_seresco’.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image138.png">
+                <br />
+                </div>
+            </div>
+
+            <p>5. Está es la vista final de la base de datos antes de empezar a crear las tablas:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image139.png">
+                <br />
+                </div>
+            </div>
+
+            <p>6. Seguidamente, empezaremos con la creación de las tablas de la base de datos, la primera tabla vamos a explicarla al detalle, pero para las siguientes se mostrará solo su resultado final.</p>
+        
+            <p>Tabla cursos:</p>
+
+            <ul>
+                <li>Pulsaremos click derecho y en “Crear Nuevo Columna”.</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image140.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Añadiremos una columna por cada atributo de la tabla.</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image141.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Para añadir la función de “Primary key” en el id añadiremos una nueva restricción o “constraint”.</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image142.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Creamos los atributos que nos faltan.</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image144.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image143.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Y la tabla cursos ya estaría hecha:</li>
+                
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image145.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <p>7. Procedemos con las demás tablas.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image146.png">
+                <br />
+                </div>
+            </div>
+            <p></p>
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image147.png">
+                <br />
+                </div>
+            </div>
+            <p></p>
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image148.png">
+                <br />
+                </div>
+            </div>
+            <p></p>
+
+            <p>8.	Por último, crearemos las tablas que unirán a las creadas anteriormente, en estos casos podemos observar que tenemos que crear varias claves foráneas. Para ello, las crearemos en el apartado “Claves foráneas” de la base de datos:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image149.png">
+                <br />
+                </div>
+            </div>
+
+            <p>9.	Dentro de este apartado elegiremos la tabla de referencia, pondremos un nombre a la clave foránea y le daremos a aceptar.</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image150.png">
+                <br />
+                </div>
+            </div>
+
+            <p>10. Después de crear las demás claves foráneas quedaría así: </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image151.png">
+                <br />
+                </div>
+            </div>
+
+            <p>11. Para la tabla Alumnos_Clase_Curso debemos de centrarnos en dos aspectos importantes:</p>
+        
+            <ul>
+            	<li>La clave primaria de esta tabla es compuesta:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image152.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>La clave foránea que conecta esta tabla con la tabla clases_curso estará almacenada en esta tabla:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image153.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Después de crear las dos tablas, esta sería su estructura:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image154.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image155.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>El diagrama de la base de datos en este momento se verá así:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image156.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <p>12.	Para insertar los datos en las tablas podemos hacerlo gráficamente en las tablas, sin embargo, voy a insertarlas por SQL ya que lo veo más automático y rápido:</p>
+        
+            <ul>
+            	<li>Inserción de datos en tabla alumnos:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image157.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Datos insertados en la tabla:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image158.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Inserción de datos en tabla profesores:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image159.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Datos insertados en la tabla:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image160.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <p>13. Continuamos creando una nueva tabla llamada asignaturas, utilizaremos el atributo “título” como clave primaria, ya que en un centro educativo no existen asignaturas con el mismo nombre:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image161.png">
+                <br />
+                </div>
+            </div>
+            <p></p>
+            <ul>
+            	<li>Inserción de datos en tabla asignaturas:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image162.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Datos insertados en la tabla:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image163.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <p>14. Para finalizar, haremos unos cambios propuestos en la base de datos, en primer lugar “Todos los alumnos pasaron a 2A con excepción de Mari Nieves que repitió y se quedó en 1A”:</p>
+
+            <ul>
+            	<li>Para empezar, vamos a insertar los cursos 1A y 2A en la tabla Clases, en este caso al ser dos datos usaré la interfaz gráfica:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image164.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Después necesitamos añadir cursos a la tabla curso, en este caso añadiremos solo uno:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image165.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Después, añadiremos los datos de las tablas cursos, clases y profesores en la tabla clases_curso (Como solo sabemos un tutor el atributo id_tutor del id 2 quedara como NULL):</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image166.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Ahora debemos de introducir los id de los alumnos y los id de clases_curso en la tabla alumnos_clase_curso:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image167.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <p>15.	Continuamos con “Llegaron a 2A dos alumnos de otra escuela: Emilio Fernández y Noelia Tuero”.</p>
+
+            <ul>
+            	<li>Añadimos a la tabla alumnos a Emilio Fernández y a Noelia Tuero:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image168.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Por último, añadimos su id a la tabla alumnos_clase_curso:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image169.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <p>16. Por último, “Se inauguró un nuevo aula 1B con tutor Vicente Suarez y 3 alumnos: Alejandro Suarez, Pablo Alonso e Ismael Diego”</p>
+
+            <ul>
+            	<li>Añadimos el aula 1B a la tabla clases:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image170.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Metemos el id de la clase a la tabla clases_curso para ponerle el tutor:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image171.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Para acabar, cambiamos la clase de los alumnos Alejandro Suarez, Pablo Alonso e Ismael Diego por la nueva clase.</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image172.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <h2>Base de datos: Banco</h2>
+
+            <p>1. En primer lugar, creamos la base de datos:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image173.png">
+                <br />
+                </div>
+            </div>
+
+            <p>2. Crearemos un esquema del banco (Si no se hubiera creado automáticamente al crear la base de datos): </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image174.png">
+                <br />
+                </div>
+            </div>
+
+            <p>3. Adaptamos el código recibido para la creación de la base de datos, de manera que creemos estas tablas: </p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image175.png">
+                <br />
+                </div>
+            </div>
+
+            <p>4.	Las inserciones de datos proporcionadas también deben de adaptarse, ya que el código tenía errores como los valores de las fechas o las comillas dobles en vez de simples, así quedarían las tablas con los datos:</p>
+
+            <ul>
+            	<li>Tabla atraco:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image176.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla banco:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image177.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla contrato:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image178.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla delincuente:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image179.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla juez:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image180.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla sucursal:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image181.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla vigilante:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image182.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+            <h2>Base de datos: Banco [Ampliaciones]</h2>
+
+            <p>1. Empezaremos con herencia de clases, queremos diferenciar dos tipos de empleados (Directivos y Administrativos), por lo tanto, debemos crear tres tablas con relaciones uno a uno:</p>
+        
+            <!-- TARJETA --> 
+            <div class="card" id="div4">
+                <div class="head">DBeaver</div>
+                <div class="content">
+                    <img  src="images/image183.png">
+                <br />
+                </div>
+            </div>
+
+            <ul>
+            	<li>Tabla empleado:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image184.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla directivo:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image185.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <li>Tabla administrativo:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image186.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+                <p>Cada empleado debe estar en una de estas tablas (directivo o administrativo), pero no en ambas.</p>
+            </ul>
+
+            <p>2. Por último, definiremos la relación de muchos a muchos entre las tablas delincuente y banda, previamente eliminaremos la relación directa entre delincuente:</p>
+        
+            <ul>
+            <li>Para esta tarea simplemente crearemos una banda intermedia llamada delincuente_banda, la cual conectará ambas entidades. Tabla delincuente_banda:</li>
+                <p></p>
+                <div class="card" id="div4_4">
+                    <div class="head">DBeaver</div>
+                    <div class="content">
+                        <img  src="images/image187.png">
+                    <br />
+                    </div>
+                </div>
+                <p></p>
+            </ul>
+
+        </section>
+
+        <button id="scrollTopBtn" class="delete-button">↑</button>
+
+    </div>
+
+    <footer>
+        <p>&copy; Cristian Villa Blanco - Proyecto de Prácticas 2025</p>
+    </footer>
+
+    <script>
+        
+    </script>
+</body>
+</html>
+
